@@ -1,0 +1,7 @@
+df=read.csv(file.choose())
+library(prophet)
+library(dplyr)
+m=prophet(df)
+future=make_future_dataframe(m,periods = 3650)
+forecast=predict(m,future)
+plot(m,forecast,xlabel = "YEAR",ylabel = "Temperature")
